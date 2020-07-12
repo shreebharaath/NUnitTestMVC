@@ -1,0 +1,120 @@
+﻿@model  UnitTestCICD.Models.EmpDetails
+@{
+    ViewBag.Title = "EmpDetails";
+}
+
+
+@*SAVE CHALLAN DETAILS*@
+<script type="text/javascript">
+
+    function SaveDetails() {
+
+        var EmpNo = parseInt($('#EmpNo').val());
+        var PhoneNo = parseInt($('#PhoneNo').val());
+
+        $.ajax(
+            {
+                type: "POST",
+                url: "../EmpDetails/SaveDetails",
+                data:
+                {
+                    Name: $('#Name').val(),
+                    City: $('#City').val(),
+                    EmpNo,
+                    PhoneNo
+                },
+
+                success: function (response) {
+                    $.unblockUI();
+                    if (response = "OK") {
+                        alert("Challan Details Saved Successfully")
+                        window.location.reload(true);
+                    }
+                }
+            });
+    }
+
+</script>
+
+
+@*SAVE CHALLAN DETAILS*@
+<script type="text/javascript">
+
+    function SearchDetails() {
+
+        var EmpNo = parseInt($('#EmpNo').val());
+    
+        $.ajax(
+            {
+                type: "POST",
+                url: "../EmpDetails/SearchDetails",
+                data:
+                {
+                    EmpNo
+                },
+
+                success: function (response) {
+                    $.unblockUI();
+                    if (response = "OK") {
+                        alert("Challan Details Saved Successfully")
+                        window.location.reload(true);
+                    }
+                }
+            });
+    }
+
+</script>
+
+<h2>EmpDetails</h2>
+<table>
+    <tr>
+        <td>
+            EmpNo :
+        </td>
+
+        <td>
+            @Html.TextBoxFor(m => m.EmpNo, new { @id = "EmpNo" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Name :
+        </td>
+
+        <td>
+            @Html.TextBoxFor(m => m.Name, new { @id = "Name" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone :
+        </td>
+
+        <td>
+            @Html.TextBoxFor(m => m.PhoneNo, new { @id = "PhoneNo" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            City :
+        </td>
+
+        <td>
+            @Html.TextBoxFor(m => m.City, new { @id = "City" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="Submit" id="btnSubmit" onclick="return SaveDetails()" />
+        </td>
+        <td>
+            <input type="button" value="Submit" id="btnSearch" onclick="return SearchDetails()" />
+        </td>
+    </tr>
+
+    <tr>
+    </tr>
+
+</table>
+
