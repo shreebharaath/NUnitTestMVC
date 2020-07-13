@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using UnitTestCICD.Controllers;
 using UnitTestCICD.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;https://www.youtube.com/watch?v=pksLVOtRfno&t=7s
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProjCICD
 {
